@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+
+
+
+        // Date Types 
+        //String
+        let name = new String("ahmet") //"ahmet";
+        let number = new Number(10)  //10;
+        let number2 = new Number(20) //20;
+        let hasProduct = new Boolean(false) //false;
+        let number3 = BigInt(10000000);
+        let undefined_datatype = undefined;
+        let null_datatype = null;
+        let now_date = new Date();
+        let product = { name: "kalem 1", price: 10.99, stock: 20 }
+
+        //good way
+        console.log(`${product.name}-${product.price}-${product.stock}`);
+        //bad way
+        console.log(product.name + "-" + product.price);
+
+        console.log(now_date);
+        console.log("number3 type :" + typeof number3)
+        console.log("product type :" + typeof product)
+
+
+        let names = new Array("ahmet", "mehmet", "hasan");
+        console.log(names[0]);
+        console.log(names[1]);
+        console.log(names[2]);
+        console.log("index of ahmet:" + names.indexOf("hasan"))
+        console.log(number + number2);
+        console.log(name + number);
+
+        if (hasProduct == true) {
+            console.log("ürün var");
+        }
+        else {
+            console.log("ürün yok");
+        }
+
+        console.log(null_datatype);
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <p>Javascript Lesson 1</p>
+    <div id="box"></div>
+</body>
+
+</html>
+
+<script>
+    let i = "abc";
+    document.getElementById("box").innerHTML = i;
+</script>
