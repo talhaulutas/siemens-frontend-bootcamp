@@ -1,0 +1,38 @@
+OOP  concepts
+- Abstraction
+- Encapsulation
+- Inheritance
+- Polymorphism
+
+
+SOLID- Design Pattern( OIC/ Has-A/IS-A)
+
+
+
+// data types
+- reference types      (class,array,delegate,event,object,interface) - heap
+- value/primitive types ( bool,datetime,long,short,int,interface) - stack
+
+
+// pure/impure function
+
+//pure function
+function (int a,int b)
+{
+
+    return a+b;
+}
+
+
+//impure function
+var kdv=18;
+function A(int a,int b) 
+{
+
+    return (a+b)*kdv;
+}
+function B()
+{
+    kdv=15;
+}
+
