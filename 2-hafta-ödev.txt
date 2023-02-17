@@ -1,0 +1,10 @@
+SOLID  ( 2 tane örnek)
+Has-A ( 2 tane örnek)
+Is-A ( 2 tane örnek)
+Inheritance (1 örnek)
+Abstraction  (1 örnek)
+Polymorphism  (1 örnek)
+Encapsulation  (1 örnek)
+
+
+
