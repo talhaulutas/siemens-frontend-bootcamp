@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { InlineComponent } from './components/inline-component/inline.component';
 
 import { NormalComponent } from './components/normal/normal.component';
+import { StructuralDirectiveComponent } from './components/structural-directive/structural-directive.component';
+import { ExampleComponent } from './components/example/example.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InlineComponent,
-    NormalComponent
+    NormalComponent,
+    StructuralDirectiveComponent,
+    ExampleComponent
   ],
   imports: [
     BrowserModule,
