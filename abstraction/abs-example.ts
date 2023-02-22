@@ -1,44 +1,85 @@
-abstract class Employee {
 
+class Student {
+    id: number;
     name: string;
-    paymentPerHour: number;
+    grade: number;
 
-    constructor(name: string, paymentPerHour: number) {
+    constructor(id: number, name: string, grade: number) {
+        this.id = id;
         this.name = name;
-        this.paymentPerHour = paymentPerHour;
-    }
-
-    public abstract calculateSalary(): number;
-}
-
-class Contractor extends Employee {
-
-    workingHours: number;
-    constructor(name: string, paymentPerHour: number, workingHours: number) {
-        super(name, paymentPerHour);
-        this.workingHours = workingHours;
-    }
-
-    calculateSalary(): number {
-        return this.paymentPerHour * this.workingHours;
+        this.grade = grade;
     }
 }
 
-class FullTimeEmployee extends Employee {
-    constructor(name: string, paymentPerHour: number) {
-        super(name, paymentPerHour);
+class StudentRepository implements IStudentRepository {
+
+
+    GetStudents(): Student[] {
+
+        // sql server
+        let productList: Student[] = [];
+        productList.push(new Student(1, "ahmet", 64))
+        productList.push(new Student(2, "mehmet", 48))
+        productList.push(new Student(3, "hasan", 52))
+        return productList;
+
     }
 
-    calculateSalary(): number {
-        return this.paymentPerHour * 8;
+
+}
+
+class StudentRepositoryWithSQL implements IStudentRepository
+{
+
+    GetStudents(): Student[] {
+        let studentList: Student[] = [];
+        studentList.push(new Student(1, "eda", 100))
+        studentList.push(new Student(2, "mert", 75))
+        studentList.push(new Student(3, "burcu", 95))
+        return studentList;
     }
+    
+}
+
+interface IStudentRepository {
+    GetStudents(): Student[];
 }
 
 
-let contractor: Employee;
-let fullTimeEmployee: Employee;
-contractor = new Contractor('Ramesh contractor', 10, 5);
-fullTimeEmployee = new FullTimeEmployee('Ramesh full time employee', 8);
 
-console.log(contractor.calculateSalary());
-console.log(fullTimeEmployee.calculateSalary());
+class StudentService {
+
+    private _productRepository: IStudentRepository;
+    constructor(productRepository:IStudentRepository) {
+
+        this._productRepository = productRepository;
+    }
+
+    GetStudents(): Student[] {
+        let newStudentList: Student[] = [];
+
+
+        this._productRepository.GetStudents().forEach(x => {
+            newStudentList.push(new Student(x.id, x.name, x.grade));
+
+        })
+        return newStudentList;
+    }
+}
+
+class StudentFactory {
+
+    public CreateRepository(): IStudentRepository {
+        return new StudentRepository();
+    }
+
+    public CreateRepositoryWithOracle():IStudentRepository
+    {
+        return new StudentRepositoryWithSQL();
+    }
+}
+
+var studentService = new StudentService(new StudentFactory().CreateRepository());
+studentService.GetStudents().forEach(x => {
+    console.log(`${x.id} ${x.name} ${x.grade}`)
+})
