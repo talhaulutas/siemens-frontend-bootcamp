@@ -7,19 +7,15 @@
                 <thead>
                     <tr>
 
-                        <th scope="col">Id</th>
                         <th scope="col">Name</th>
                         <th scope="col">Surname</th>
-                        <th scope="col">Grade</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr [ngClass]="{'selected':highlightRow(student.id)}" *ngFor="let student of studentList">
-                        <th>{{student.id}}</th>
                         <td>{{student.name}}</td>
                         <td>{{student.surname}}</td>
-                        <td>{{student.grade}}</td>
                         <td><button (click)="showDetail(student.id)">detay göster</button></td>
                     </tr>
 
