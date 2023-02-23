@@ -7,18 +7,20 @@ import { Student } from '../../models/student';
   styleUrls: ['./child-product.component.css']
 })
 export class ChildProductComponent {
-  selectedId:number  | undefined;
+  @Input() selectedId:number  | undefined;
   @Input() studentList: 
 
   ReadonlyArray<Student> | undefined;
   @Output() detailShowClick = new EventEmitter<number>();
+  
 
   showDetail(id: number) {
-    this.selectedId=id;
+    this.selectedId = id;
     this.detailShowClick.emit(this.selectedId);
   }
-  highlightRow(productId:number)
-  {
-    return this.selectedId==productId;
+  highlightRow(studentId: number) {
+    return this.selectedId == studentId;
   }
+  
+
 }

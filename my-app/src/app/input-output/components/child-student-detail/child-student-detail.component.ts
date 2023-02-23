@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Student } from '../../models/student';
+import { ChildProductComponent } from '../child-product/child-product.component';
 
 @Component({
   selector: 'app-child-student-detail',
@@ -7,6 +8,11 @@ import { Student } from '../../models/student';
   styleUrls: ['./child-student-detail.component.css']
 })
 export class ChildStudentDetailComponent {
-  @Input() selectedStudent:Student | undefined
+  @Input() selectedStudent:Student | undefined;
+  @Output() closeEventClick = new EventEmitter();
 
+  close()
+  {
+    this.closeEventClick.emit();
+  }
 }

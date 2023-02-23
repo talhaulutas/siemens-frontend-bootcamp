@@ -25,4 +25,8 @@ export class ParentStudentComponent {
   showDetail(studentId: number) {
     this.selectedStudent = this.studentService.getById(studentId);
   }
+  close()
+  {
+    this.selectedStudent=undefined;
+  }
 }
