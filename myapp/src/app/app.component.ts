@@ -19,30 +19,14 @@ export class AppComponent {
   title = 'myapp';
   constructor(private fakeService:FakeserviceService)
   {
-    this.fakeService.getPostsGood().subscribe(x=>{
-      console.log(x);
-    })
-    
-
-    
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+    //this.fakeService.getPostsWithUserId(2).subscribe(x=>console.log(x));
+    this.fakeService.getAlbumsWithUserId(2).subscribe(x=>console.log(x));
 
 
     /*
+    this.fakeService.getPostsWithHeader().subscribe(x=>{
+      console.log(x);
+    })
     ajax.getJSON('https://jsonplaceholder.typicode.com/todos/1').subscribe(x=>{
         console.log(x);
       })
@@ -108,6 +92,26 @@ export class AppComponent {
     fromOperator.pipe(map(x=>x*2)).subscribe(x=>{
       console.log(x);
     })*/
+    /*this.fakeService.savePostWithError({id:1,title:'title 1',body:'body 1',userId:2}).subscribe({
+      next:(data)=>{console.log(data)},
+      error:(err)=>{console.log(err.message)
+        //console.log(`hata:${err.message}`)
+        //alert("Bir hata meydana geldi. Lütfen daha sonra tekrar deneyiniz.")
+      },
+      complete:()=>console.log("tamamlandı.")
+    });
+    this.fakeService.updatePut({id:1,title:'title 1',body:'body 1',userID:2}).subscribe({
+      next:(data)=>{console.log(data)},
+      error:(err)=>console.log(err.message),
+        //console.log(`hata:${err.message}`)
+        //alert("Bir hata meydana geldi. Lütfen daha sonra tekrar deneyiniz.")
+      
+      complete:()=>console.log("tamamlandı.")
+    })
+    this.fakeService.deletePost(1).subscribe(x=>console.log(x));
+    this.fakeService.getParallelRequest().postObservable.subscribe(x=>console.log(x));
+    this.fakeService.getParallelRequest().userObservable.subscribe(x=>console.log(x));
+    this.fakeService.getParallelWithForkJoinOperator().subscribe(x=>console.log(x.users));*/
 
   }
 }
