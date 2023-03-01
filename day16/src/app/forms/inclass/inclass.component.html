@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form [formGroup]="userForm" (ngSubmit)="save()">
+        <div>
+          <h3>Kullanıcı Giriş</h3>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">E-mail :</label>
+          <input name="email" formControlName="email" type="email" class="form-control"  ngModel email="true"/>
+          <div class="form-text text-danger">
+            <div *ngIf="isInvalid('email')">
+              <div *ngIf="isInvalidControl('email', 'required')">
+                E-mail alanının doldurulması gereklidir.
+              </div>
+              <div *ngIf="isInvalidControl('email', 'email')">
+                E-mail formatı uygun değil.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Password :</label>
+          <input formControlName="password" type="password" class="form-control" />
+          <div class="form-text text-danger">
+            <div *ngIf="isInvalid('password')">
+              <div *ngIf="isInvalidControl('password', 'required')">
+                Şifre alanı doldurulmalıdır.
+              </div>
+              <div *ngIf="
+                  isInvalidControl('password', 'barcodeFormat')
+                ">
+                Şifre formata uygun değil.</div>
+              <div *ngIf="
+                  isInvalidControl('password', 'productExist')
+                ">
+                Şifre formata uygun değil.
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" formControlName="rememberMe" />
+          <label class="form-check-label" for="exampleCheck1">Beni hatırla</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+      </form>
+      <div class="mb-3">
+        <ul>
+          <li>Email: {{userForm.get("email")?.value | json}}</li>
+          <li>Password: {{userForm.get("password")?.value | json}}</li>
+          <li>Errors: {{userForm.get("email")?.errors | json}}</li>
+          <li>Errors: {{userForm.get("password")?.errors | json}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

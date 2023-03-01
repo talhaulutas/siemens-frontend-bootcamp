@@ -3,6 +3,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Product } from '../../models/product';
 import { CategoryMenu } from '../../models/category-menu';
 import { PublishMenu } from '../../models/publish-menu';
+import { barcodeValidator } from '../../validations/barcode-validator';
+import { PublishStartEndDataValidator } from '../../validations/publish-start-end-date-validator';
+import { PostService } from './post.service';
+import { ExistProductNameValidator } from '../../validations/exist-product-name-validator';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -11,16 +15,32 @@ import { PublishMenu } from '../../models/publish-menu';
 })
 export class ReactiveFormsComponent {
   newProduct: Product | undefined = undefined;
-  public productForm = this.formBuilder.group({
-    name: ['', [Validators.required, Validators.minLength(5)]],
-    price: [
-      '',
-      [Validators.required, Validators.min(100), Validators.max(1000)],
-    ],
-    stock: ['', [Validators.required, Validators.min(10), Validators.max(50)]],
-    category: ['', Validators.required],
-    publish: ["2"],
-  });
+  public productForm = this.formBuilder.group(
+    {
+      name: [
+        '',
+        {
+          Validators: [Validators.required, Validators.minLength(5)],
+          asyncValidators: [ExistProductNameValidator(this.postService)],
+        },
+      ],
+      price: [
+        '',
+        [Validators.required, Validators.min(100), Validators.max(1000)],
+      ],
+      stock: [
+        '',
+        [Validators.required, Validators.min(10), Validators.max(50)],
+      ],
+      category: ['', Validators.required],
+      publish: ['2'],
+      isPublish: [false],
+      barcode: ['', [Validators.required, barcodeValidator()]],
+      publishStartDate: [new Date(), [Validators.required]],
+      publishEndDate: [new Date(), [Validators.required]],
+    },
+    { validators: PublishStartEndDataValidator() }
+  );
 
   categoryMenuList: CategoryMenu[] = [
     { id: 1, text: 'kalemler' },
@@ -34,9 +54,21 @@ export class ReactiveFormsComponent {
     { id: 3, text: '9 ay' },
   ];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private postService: PostService
+  ) {
+    this.postService.searchByProductName('sunt').subscribe((x) => {
+      console.log(x.length);
+    });
+  }
 
   save() {
+    if (this.productForm.invalid) {
+      alert('Lütfen tüm alanları doldurunuz');
+      return;
+    }
+
     this.newProduct = this.productForm.value as Product;
     console.log(this.newProduct);
   }
@@ -49,6 +81,9 @@ export class ReactiveFormsComponent {
     if (control.errors?.['required']) return true;
     if (control.errors?.['minlength']) return true;
     if (control.errors?.['maxlength']) return true;
+    if (control.errors?.['max']) return true;
+    if (control.errors?.['min']) return true;
+    if (control.errors?.['barcodeFormat']) return true;
 
     return false;
   }
