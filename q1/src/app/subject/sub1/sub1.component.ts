@@ -1,0 +1,19 @@
+import { Component, OnInit } from '@angular/core';
+import { SubjectProviderService } from '../subject-provider.service';
+
+@Component({
+  selector: 'app-sub1',
+  templateUrl: './sub1.component.html',
+  styleUrls: ['./sub1.component.css']
+})
+export class Sub1Component implements OnInit{
+  selectedItemValue: number | undefined;
+  name: string | undefined;
+  constructor(private subjectProviderService: SubjectProviderService) { }
+  ngOnInit(): void {
+
+    this.subjectProviderService.myNameObservable.subscribe(x => {
+      this.name = x as string;
+    })
+  }
+}
