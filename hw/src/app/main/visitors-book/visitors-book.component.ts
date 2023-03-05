@@ -1,6 +1,6 @@
 import { Visitor } from '@angular/compiler';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-visitors-book',
@@ -9,16 +9,16 @@ import { FormBuilder, FormControl } from '@angular/forms';
 })
 export class VisitorsBookComponent {
   newVisitor:Visitor | undefined = undefined;
-  visitorList:Visitor[] = [];
+  visitorList:any[] = [];
   constructor(private formBuilder:FormBuilder)
   {}
   public visitorForm = this.formBuilder.group({
-    name: new FormControl(),
-    email: new FormControl(),
-    content: new FormControl(),
-    birthDate: new FormControl(),
-    publishDateExpire: new FormControl(),
-    contentType:new FormControl()
+    name: ['',[Validators.required]],
+    email: ['',[Validators.required]],
+    content: ['',[Validators.required,Validators.minLength(50)]],
+    birthDate: [[new Date(), [Validators.required]]],
+    publishDateExpire: [''],
+    contentType:['',[Validators.required]]
   })
   onSubmit()
   {

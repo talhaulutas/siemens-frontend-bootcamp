@@ -16,9 +16,9 @@ export class AdminPostPageComponent {
     });
     
   }
-  getComments()
+  getComments(id:number)
   {
-    this.adminService.getCommentsByPostId(1).subscribe(x=>{
+    this.adminService.getCommentsByPostId(id).subscribe(x=>{
       this.postList = x;
     })
   }
