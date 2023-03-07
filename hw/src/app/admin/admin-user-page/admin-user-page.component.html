@@ -10,7 +10,8 @@
             <td>{{u.name}}</td>
             <td>{{u.username}}</td>
             <td>{{u.email}}</td>
-            <td><button class="btn-primary" type="button">See Details</button></td>
+            <td><a class="btn btn-primary" [routerLink]="['/admin/admin-user-detail', u.id]"
+                >detay göster</a> </td>
         </tr>
     </tbody>
 </table>

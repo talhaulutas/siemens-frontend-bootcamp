@@ -12,6 +12,9 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminPostPageComponent } from './admin/admin-post-page/admin-post-page.component';
 import { AdminUserPageComponent } from './admin/admin-user-page/admin-user-page.component';
 import { AdminVisitorPageComponent } from './admin/admin-visitor-page/admin-visitor-page.component';
+import { AdminPostDetailComponent } from './admin/admin-post-detail/admin-post-detail.component';
+import { AdminUserDetailComponent } from './admin/admin-user-detail/admin-user-detail.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,12 +26,15 @@ import { AdminVisitorPageComponent } from './admin/admin-visitor-page/admin-visi
     AdminHomeComponent,
     AdminPostPageComponent,
     AdminUserPageComponent,
-    AdminVisitorPageComponent
+    AdminVisitorPageComponent,
+    AdminPostDetailComponent,
+    AdminUserDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    FormsModule
     
 
   ],

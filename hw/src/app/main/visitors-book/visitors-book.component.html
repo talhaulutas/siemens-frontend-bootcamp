@@ -1,11 +1,26 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 offset-md-3 mt-3">
-      <form [formGroup]="visitorForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="visitorForm" (ngSubmit)="save()">
         <div class="form-group">
           <label for="exampleInputPassword1">Name</label>
           <input type="text" class="form-control" name="name" placeholder="Name" formControlName="name">
+          <div class="form-text text-danger">
+            <div *ngIf="isInvalid('name')">
+              <div *ngIf="isInvalidControl('name', 'required')">
+                ziyaretçi isim alanı girilmesi gereklidir.
+              </div>
+
+              <div *ngIf="
+                  isInvalidControl('name', 'minlength') ||
+                  isInvalidControl('name', 'maxlength')
+                ">
+                ziyaretçi isim alanı en az 5 karakter girilmesi gereklidir.
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="form-group">
           <label for="exampleInputPassword1">E-Mail</label>
           <input type="text" class="form-control" name="email" placeholder="E-Mail" formControlName="email">
@@ -13,11 +28,35 @@
         <div class="form-group">
           <label for="exampleInputPassword1">Content</label>
           <input type="text" class="form-control" name="content" placeholder="Content" formControlName="content">
+          <div class="form-text text-danger">
+            <div *ngIf="isInvalid('content')">
+              <div *ngIf="isInvalidControl('content', 'required')">
+                yazı alanı gereklidir.
+              </div>
+
+              <div *ngIf="
+                  isInvalidControl('content', 'minlength') ||
+                  isInvalidControl('content', 'maxlength')
+                ">
+                yazı alanı en az 50 karakter girilmelidir gereklidir.
+              </div>
+            </div>
+          </div>
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Birth-Date</label>
-          <input type="datetime-local" class="form-control" name="birthDate" placeholder="Birth-Date"
+          <label class="form-label">Birth-Date</label>
+          <input type="date" class="form-control" name="birthDate" placeholder="Birth-Date"
             formControlName="birthDate">
+          <div class="form-text text-danger">
+            <div *ngIf="isInvalid('birthDate')">
+              <div *ngIf="isInvalidControl('birthDate', 'required')">
+                doğum tarihi alanı girilmesi gereklidir.
+              </div>
+              <div *ngIf="isInvalidControl('birthDate', 'birthdateFormat')">
+                doğum tarihi 16 yaşından küçük olmamalıdır.
+              </div>
+            </div>
+          </div>
         </div>
         <label>Publish Date Expire: </label>
         <div class="form-check">
@@ -44,10 +83,17 @@
         <div class="form-group">
           <label for="inputState">Content Type</label>
           <select id="inputState" class="form-control" name="contentType" formControlName="contentType">
-            <option selected>Choose...</option>
+            <option value="" selected>Choose...</option>
             <option value="Review">Review</option>
             <option value="Suggestion">Suggestion</option>
           </select>
+          <div class="form-text text-danger">
+            <div *ngIf="isInvalid('contentType')">
+              <div *ngIf="isInvalidControl('contentType', 'required')">
+                lütfen yazı nedeninizi belirtiniz.
+              </div>
+            </div>
+          </div>
         </div>
 
         <button type="submit" class="btn btn-primary mt-3">Submit</button>
@@ -62,13 +108,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let v of visitorList">
-              <td>{{v?.name}}</td>
-              <td>{{v?.email}}</td>
-              <td>{{v?.content}}</td>
-              <td>{{v?.birthDate}}</td>
+          <tr *ngFor="let visitor of visitorService.filterConfirm()">
+            <td>{{visitor?.name}}</td>
+            <td>{{visitor?.email}}</td>
+            <td>{{visitor?.content}}</td>
+            <td>{{visitor?.birthDate}}</td>
           </tr>
-      </tbody>
+        </tbody>
       </table>
     </div>
   </div>

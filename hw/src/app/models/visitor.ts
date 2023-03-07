@@ -1,10 +1,26 @@
 export interface Visitor {
-    name?:string;
-    email?:string;
-    content?:string;
-    birthDate?:Date;
-    publishDateExpire?:number;
-    contentType:string;
-    isOk?:boolean;
-
-}
+    /*
+   id:number;
+    name:string;
+    email:string;
+    content:string;
+    birthDate: Date;
+    publishdateExpire: string;
+    contentType: string;
+    isConfirmed: boolean;
+    */
+        name: string;
+        email: string;
+        content: string;
+        birthDate: Date;
+        publishdateExpire: string;
+        contentType: string;
+        isConfirmed: boolean;
+    
+    }
+   
+   
+   
+    
+   
+    
