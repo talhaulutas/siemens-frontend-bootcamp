@@ -1,16 +1,19 @@
-import { useState,React } from 'react'
-import Search from './components/search'
-import Logo from './components/logo'
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
 import './App.css'
+import { BrowserRouter } from "react-router-dom";
+import Router from './Router'
+import Menu from './components/Menu'
+
 
 function App() {
-  return (
-    <div>
-      <Logo />
-      <Search />
-    </div>
-    
-  )
+
+  return <BrowserRouter>
+  <Menu />
+  <Router />
+    </BrowserRouter>
+
+  
 }
 
 export default App
