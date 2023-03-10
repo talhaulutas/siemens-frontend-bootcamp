@@ -1,18 +1,21 @@
-import React,{useState} from "react";
-function filter()
-{
-    const [checked, setChecked] = useState(false);
+import React, { useState } from 'react';
+function Filter() {
+  const [checked, setChecked] = useState(false);
 
-    const handleChange = () => {
-      setChecked(!checked);
-    };
-    return 
-    (
-    <label>
-    <input type="checkbox" checked={checked}
-    onChange={handleChange} />
-    
-    </label> 
-    )
-    
+  const handleChange = () => {
+    setChecked(!checked);
+  };
+  return
+  (
+    <div class="Filter">
+      <label>
+        <input type="checkbox" checked={checked}
+          onChange={handleChange} />
+
+      </label>
+    </div>
+
+  )
+
 }
+export default Filter;
