@@ -5,6 +5,7 @@ import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -12,6 +13,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   declarations: [
     MainLayoutComponent,
     AdminLayoutComponent,
+    FooterComponent,
     
   ],
   imports: [

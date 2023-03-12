@@ -12,10 +12,9 @@ export class VisitorStateService {
   constructor() { }
 
   deleteVisitor(email:string){
-   const index = this.visitors.findIndex(x=> x.email == email);
-   this.visitors.splice(index, 1);
+   this.visitors = this.visitors.filter(x=>x.email != email);
   }
-  addVisitor(newVisitor : Visitor){
+  addVisitor(newVisitor:Visitor){
     this.visitors.push(newVisitor);
   }
   resetForm(form: FormGroup){

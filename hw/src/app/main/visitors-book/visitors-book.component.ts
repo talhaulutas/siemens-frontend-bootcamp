@@ -18,7 +18,7 @@ export class VisitorsBookComponent {
   {}
   public visitorForm = this.formBuilder.group({
     name: ['',[Validators.required,Validators.minLength(5)]],
-    email: ['',[Validators.required]],
+    email: ['',[Validators.required,Validators.email]],
     content: ['',[Validators.required,Validators.minLength(50)]],
     birthDate: ['', [Validators.required,BirhdateValidator()]],
     publishdateExpire: [''],
@@ -79,6 +79,7 @@ export class VisitorsBookComponent {
    this.visitorService.addVisitor(this.newVisitor);
    console.log(this.visitorService.visitors);
    this.visitorService.resetForm(this.visitorForm);
+   alert("Form submitted.");
   }
 
 }
