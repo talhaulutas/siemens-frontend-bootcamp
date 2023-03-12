@@ -17,11 +17,11 @@ export class VisitorsBookComponent {
   constructor(private formBuilder:FormBuilder,public visitorService:VisitorStateService)
   {}
   public visitorForm = this.formBuilder.group({
-    name: ['',[Validators.required]],
+    name: ['',[Validators.required,Validators.minLength(5)]],
     email: ['',[Validators.required]],
     content: ['',[Validators.required,Validators.minLength(50)]],
     birthDate: ['', [Validators.required,BirhdateValidator()]],
-    publishDateExpire: [''],
+    publishdateExpire: [''],
     contentType:['',[Validators.required]],
     isConfirmed: [false]
   })

@@ -16,8 +16,6 @@ export class AdminService {
   }
   getCommentsByPostId(id:number)
   {
-    /*return this.httpClient.get<any>('https://jsonplaceholder.typicode.com/posts').pipe(switchMap(x=>from(x)),
-    find(x=>x.id == id),switchMap(x=>this.httpClient.get<Comment[]>(`https://jsonplaceholder.typicode.com/comments?postId=${x?.userId}`)))*/
     return this.httpClient.get<any> (`https://jsonplaceholder.typicode.com/comments/${id}`);
   }
   getUsers()
