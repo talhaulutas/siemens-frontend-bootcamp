@@ -19,7 +19,7 @@ export class VisitorStateService {
   }
   resetForm(form: FormGroup){
     form.reset();
-    form.controls['publishdateExpire'].setValue('1 month');
+    form.controls['publishdateExpire'].setValue('3');
   }
 
   filterConfirm(): Visitor[] {

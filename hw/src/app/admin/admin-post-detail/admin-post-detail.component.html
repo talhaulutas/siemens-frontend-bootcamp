@@ -1,25 +1,18 @@
-
 <table class="table table-striped">
-    <tbody>
-      <tr>
-        <td>postId</td>
-        <td>{{ comment?.postId }}</td>
-      </tr>
-      <tr>
-        <td>id</td>
-        <td>{{ comment?.id }}</td>
-      </tr>
-      <tr>
-        <td>name</td>
-        <td>{{ comment?.name }}</td>
-      </tr>
-      <tr>
-        <td>email</td>
-        <td>{{ comment?.email }}</td>
-      </tr>
-      <tr>
-        <td>body</td>
-        <td>{{ comment?.body }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <th>PostId</th>
+    <th>ID</th>
+    <th>Name</th>
+    <th>E-mail</th>
+    <th>Body</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of commentList">
+      <td>{{ c.postId }}</td>
+      <td>{{ c.id }}</td>
+      <td>{{ c.name }}</td>
+      <td>{{ c.email }}</td>
+      <td>{{ c.body }}</td>
+    </tr>
+  </tbody>
+</table>

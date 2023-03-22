@@ -10,24 +10,15 @@ import { AdminService } from 'src/app/shared/admin.service';
   styleUrls: ['./admin-post-detail.component.css']
 })
 export class AdminPostDetailComponent implements OnInit {
-  comment?: Comment;
-  post?:Post;
+  commentList: Comment [] = [];
 constructor( private activatedRoute: ActivatedRoute,
-  private router: Router,
   private postService: AdminService){}
 
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params['id'];
-
-    this.postService.getCommentsByPostId(id).subscribe((x) => {
-      this.comment = x;
-    });
-
     this.activatedRoute.params.subscribe((param: any) => {
-      console.log(param);
       this.postService.getCommentsByPostId(param.id).subscribe((x) => {
-        this.comment = x;
+        this.commentList = x;
       });
     });
   }

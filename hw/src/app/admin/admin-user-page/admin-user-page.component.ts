@@ -9,19 +9,6 @@ import { AdminService } from 'src/app/shared/admin.service';
   styleUrls: ['./admin-user-page.component.css']
 })
 export class AdminUserPageComponent implements OnInit{
-  // userList:any[] = [];
-  // constructor(private adminService:AdminService)
-  // {
-  //   this.adminService.getUsers().subscribe(x=>{
-  //     this.userList = x;
-  //   })
-  // }
-  // getDetails(id:number)
-  // {
-  //   this.adminService.getDetailsById(id).subscribe(x=>{
-  //     this.userList = x;
-  //   })
-  // }
   userList:User[];
 
   constructor(private router:Router,private userService:AdminService){
@@ -35,7 +22,6 @@ export class AdminUserPageComponent implements OnInit{
   }
 
    goToUserDetail(id: number) {
-    // this.router.navigateByUrl(`/post-detail/${id}`);
     this.router.navigate(['/admin/admin-user-detail',id]);
   }
 
