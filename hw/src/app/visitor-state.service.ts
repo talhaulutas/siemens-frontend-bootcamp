@@ -25,4 +25,5 @@ export class VisitorStateService {
   filterConfirm(): Visitor[] {
     return this.confirmedVisitors = this.visitors.filter(x=>x.isConfirmed == true);
   }
+  
 }

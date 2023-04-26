@@ -16,9 +16,7 @@ export class AdminHomeComponent implements OnInit{
   userList: User[] = [];
   visitorList: Visitor[] = [];
 
-  constructor(private postService: AdminService,public VisitorStateService:VisitorStateService) {
-    this.postList = [];
-  }
+  constructor(private postService: AdminService,public VisitorStateService:VisitorStateService) {} 
   ngOnInit(): void {
     this.postService.getPosts().subscribe((x) => {
       this.postList = x;

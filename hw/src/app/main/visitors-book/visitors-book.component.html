@@ -159,7 +159,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let visitor of visitorService.filterConfirm()">
+          <tr *ngFor="let visitor of visitorService.confirmedVisitors">
             <td>{{ visitor?.name }}</td>
             <td>{{ visitor?.email }}</td>
             <td>{{ visitor?.content }}</td>

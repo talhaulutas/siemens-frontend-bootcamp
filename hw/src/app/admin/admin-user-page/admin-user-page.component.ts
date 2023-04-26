@@ -9,11 +9,9 @@ import { AdminService } from 'src/app/shared/admin.service';
   styleUrls: ['./admin-user-page.component.css']
 })
 export class AdminUserPageComponent implements OnInit{
-  userList:User[];
+  userList:User[] = [];
 
-  constructor(private router:Router,private userService:AdminService){
-    this.userList=[];
-  }
+  constructor(private router:Router,private userService:AdminService){}
   
   ngOnInit(): void {
      this.userService.getUsers().subscribe((x) => {
